@@ -1,48 +1,239 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   <title>My first HTML Document</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 </head>
+
 <body>
-    <h1> Heading </h1>
-    <h2> Sub heading 1</h2>
-    <p> First paragraph</p>
-    <h2> Sub heading 2</h2>
 
-    <table border = "1" cellpadding = "10%">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Grade</th>
-        </tr>
+  <div class="page">
 
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>HD</td>
-        </tr>
-    </table>
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-5">
+        <div class="description-left">
+          <img src="data/image/logo.jpg" , style="width:150px;height:100px;">
+        </div>
+      </div>
+
+      <div class="pure-u-3-5">
+        <div class="title"><center><h1>Rio Olympic Visualisation</h1></center></div>
+      </div>
+
+      <div class="pure-u-1-5">
+        <div class="description-right"> 
+          <img src="data/image/mascot.jpg" , style="width:150px;height:100px;">
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="sub"><center><h2>Medals distribution in Rio Olympic across The World</h2></center></div>
+        <center ><div id = "vis1" ></div></center>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="sub">
+          <div class = "description-left">
+            <h3>This is just an overall look. As what we know, the winner is the country with the most <span style="color: darkgoldenrod;" >gold</span> medals but not total medals.</h3>
+          </div>  
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <div class="sub">
+          <div class = "description-right">
+          <h3>Therefore, we would like to take deeper look which is the <span style="color: darkgoldenrod;" >gold</span> medals distribtion around the world.</h3> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="sub"><center><h2>Top 5 countries in Rio Olympic Medalist</h2></center></div>
+        <center><div id = "vis2"></div></center>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class = "description-left">
+          <div class="sub"><h3>This time, there is no 2 or more countries with the same number of gold medals among the top 5, therefore silver was not used to be the tie-breaker.</h3></div>
+        </div>
+      </div>
+  
+      <div class="pure-u-1-3">
+        <div class="sub"><h3>In Rio Olympic, the country stand on medallist first place is <span style="color: gold;" >United States</span> with 46 <span style="color: darkgoldenrod;" >gold</span> medals.</h3></div>
+      </div>
+
+      <div class="pure-u-1-3">
+        <div class = "description-right">
+          <div class="sub"><h3>The runner up is <span style="color: rgb(184, 142, 142);" >Great Britain</span> and <span style="color: orange;" >China</span> was dropped by one place to the third place compared to 2012 Olympic.</h3>
+          </div>
+        </div>  
+      </div>
+    </div>
+
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <center><h2>Propotional of Each Sport's Events Contribute to Rio Olympic</h2></center>
+        <center><div id = "vis3"></div></center>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="sub">
+          <center><h2>Highlighted Sports Events Result</h2></center>
+          <div class="sub"><h3>Now, we will look at the two <span style="background-color: yellow;">highlighted</span> sports type with the most events in Rio Olympic.</h3></div>
+          <center><div id = "vis5"></div></center>
+          <div class="sub"><center>Focus on you prefered gender by clicking the gender on the legend.</center></div> 
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="sub">
+          <div class = "description-left">
+            <h3>In both aquatics and athletics sport, <span style="font-weight: 1000;">United States</span> won most of the event, especially <span style="color: red;">female</span> player won the more events than <span style="color: blue;">male</span> player.</h3>
+          </div>  
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <div class="sub">
+          <div class = "description-right">
+          <h3>The another fun fact is, except <span style="font-weight: 1000;">United States</span>, there is no any other country was in the top 6 of both sport events in the same time. </h3>
+          <br>
+          <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div class="sub"><center><h2>Top 9 players (based on total player)</h2></center></div>
+        <center><div id = "vis4"></div></center>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class = "description-left">
+          <div class="sub"><h3>It is surprised that 8 out of 9 players are <span style="color: skyblue;">swimmers</span>.</h3></div>
+          <div class="sub"><h3>And 6 out of 9 players are come from United States, the only <span style="color: rgb(182, 182, 8);">gymnast</span> in top players list also come from here</h3></div>
+        </div>
+      </div>
+  
+      <div class="pure-u-1-3">
+        <div class="sub"><h2><span style="background-color: black; color: aqua;">The MVP</span></h2></div>
+        <img src="data/image/micheal.jpg" , style="width:330px;height:200px;">
+      </div>
+
+      <div class="pure-u-1-3">
+        <div class = "description-right">
+          <div class="sub">
+            <h2>
+              <span style="background-color: black; color: aqua;">Micheal Phelps</span>
+              <br>
+              <br>
+              <span style="background-color: black; color: aqua;">The player with the most medals in Rio Olympic</span>
+              <br>
+              <br>
+              <span style="background-color: black; color: gold;">Gold: 5</span>
+              <br>
+              <br>
+              <span style="background-color: black; color: silver;">Silver: 1</span>
+            </h2>
+          </div> 
+        </div>  
+      </div>
+    </div>
+
+    <!-- end pure grid group -->
+
+   
     
-    <h1>Image in html</h1>
-    <img src = "test.jpg">
+    
+    
 
-    <h1>Hyperlink in HTML</h1>
-    <a href = "https://www.youtube.com/watch?v=34Ig3X59_qA">
-        Click here to watch football match
-    </a>
-
-    <h1>Creating sections in HTML</h1>
-    <div style = "color: red;">
-        <h2>This is first group</h2>
+    <!-- pure grid group -->
+    <div class = "introduction">
+      Author: Lee Chee Yong     
+      <br>Last Edit Date: 15/10/2022
     </div>
-    <div style = "color: blue;">
-        <h2>This is second group</h2>
-    </div>
+    
 
-    <h2>Test updating</h2>
+  
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var top5 = "js/top5_countries.json";
+    var top9 = "js/top9.json";
+    var symbol = "js/symbol.json";
+    var coxcomb = "js/coxcomb.json";
+    var highlighted = "js/hconcat_scatterplot.json";
+
+    vegaEmbed('#vis1', symbol, { "actions": false });
+
+    vegaEmbed('#vis2', top5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', coxcomb, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', top9, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', highlighted, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
 
 
-
-
+  </script>
 </body>
 </html>

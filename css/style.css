@@ -1,0 +1,40 @@
+.page {
+	width: 1100px;
+	background-color: whitesmoke;
+	margin: auto;
+	padding: 50px;
+	padding-top: 35px;
+  }
+
+.pure-g {
+	margin-bottom: 40px;
+  }
+
+.title{
+	font-family: 'Helvetica', sans-serif;
+	font-size: 1000;
+	font-weight: 500;
+	color:rgb(84, 20, 194) ;
+}
+.sub{
+	font-family: 'Arial', sans-serif;
+}
+  
+.introduction {
+	font-size: 15px;
+	font-style: italic;
+  }
+
+.instruction{
+	font-size: 15px;
+	font-family: 'Garamond', serif;
+}
+  
+.description-right {
+	padding-left: 20px;
+  }
+  
+.description-left {
+	padding-right: 20px;
+}
+  
